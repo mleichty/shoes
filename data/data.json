@@ -1,5 +1,24 @@
 {
   "Users": [
 
+  ],
+
+  "Sections": [
+    {
+      "sectionName": "home",
+      "sectionContent": "<section class='home'><h1 class='home__h1'>Welcome to <br>Shoe Central</h1><h2>Don't wait for the other <br>shoe to drop, just buy it.</h2><h3>To start shopping, <a href='#' id='loginbody'>sign up</a> for an account.</h3></section>"
+    },
+    {
+      "sectionName": "about",
+      "sectionContent": "<section class='about'><h1 class='about__h1'>About Shoe Central</h1><h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2><div class='about__ps'><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab at consequuntur distinctio doloribus esse ex facilis illo ipsum iusto, laborum molestias nesciunt numquam quia repellat rerum sed similique, sunt?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab at consequuntur distinctio doloribus esse ex facilis illo ipsum iusto, laborum molestias nesciunt numquam quia repellat rerum sed similique, sunt?</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab at consequuntur distinctio doloribus esse ex facilis illo ipsum iusto, laborum molestias nesciunt numquam quia repellat rerum sed similique, sunt?</p></div></section>"
+    },
+    {
+      "sectionName": "register",
+      "sectionContent": "<section class='register'><h1>Register</h1><form action='#'><input id='fName' type='text' name='firstname' placeholder='First Name' required><input id='lName' type='text' name='lastname' placeholder='Last Name' required><input id='email' type='email' name='email' placeholder='Email' required><input id='twitter' type='text' name='twitter' placeholder='Twitter Handle' required><input disabled='true' id='submit' type='submit' value='Submit'></form></section>"
+    },
+    {
+      "sectionName": "users",
+      "sectionContent": "<h1>Users</h1>"
+    }
   ]
 }

@@ -1,62 +1,63 @@
-var appUsers = {};
+function initlisteners() {
+    $("#home").click(function () {
+        var sectionContent = SERVER.getSection("home");
+        $('.wrapper').html(sectionContent);
+        sectionListeners();
+    });
 
-function showUsers() {
-    $(".wrapper").html("");
-    $.each(appUsers, function (idx, user) {
-        $(".wrapper").append(`<div>
-        <p>Thanks for registering!</p>
-        <p>Here is your info:</p>
-        <p>First Name: ${user.fName}</p>
-        <p>Last Name: ${user.lName}</p>
-        <p>Email: ${user.email}</p>
-        <p>Twitter: ${user.twitter}</p>
-        </div>`)
-    })
+    $("#about").click(function () {
+        var sectionContent = SERVER.getSection("about");
+        $('.wrapper').html(sectionContent);
+    });
+
+    $("#register").click(function () {
+        var sectionContent = SERVER.getSection("register");
+        $('.wrapper').html(sectionContent);
+        sectionListeners();
+    });
+
+    $("#users").click(function () {
+        $('.wrapper').html("<h1 style='text-align: center; padding-top: 120px;'>Here are the current users and their information:</h1>");
+
+        var allUsers = SERVER.getAllUsers();
+
+        $.each(allUsers, function (idx, user) {
+            $(".wrapper").append(`<div style="text-align: center; padding-top: 20px;">
+            <p>First Name: ${user.fName}</p>
+            <p>Last Name: ${user.lName}</p>
+            <p>Email: ${user.email}</p>
+            <p>Twitter: ${user.twitter}</p>
+            <p></p>
+            </div>`)
+        });
+    });
 }
 
-function initListeners() {
-
-    $("#submit").click(function (e) {
-        //need to prevent the button from reloading page
-        e.preventDefault();
-        // console.log('success');
-
-        //    need to make sure data is structured the same as json before pushing
-        if ($("#fName").val() == "" || $("#lName").val() == "" || $("#email").val() == "" || $("#twitter").val() == "") {
-            $(".wrapper").html("Please fill out all fields.");
-        } else {
-            let userObj = {
-                "fName": $("#fName").val(),
-                "lName": $("#lName").val(),
-                "email": $("#email").val(),
-                "twitter": $("#twitter").val()
-            };
-
-            appUsers.splice(0,1);
-            appUsers.push(userObj);
-            showUsers();
-        }
-
+function sectionListeners() {
+    $("#loginbody").click(function () {
+        var sectionContent = SERVER.getSection("register");
+        $('.wrapper').html(sectionContent);
     });
 
     $("#submit").attr("disabled", false);
-}
 
-function loadData() {
-    $.getJSON('data/data.json', function (data) {
-        console.log(data);
-        appUsers = data.Users;
-        initListeners();
+    $("#submit").click(function (e) {
+        e.preventDefault();
+        // console.log('success');
+
+        if ($("#fName").val() == "" || $("#lName").val() == "" || $("#email").val() == "" || $("#twitter").val() == "") {
+            $(".wrapper").append("<h3 style='text-align: center;'>Please fill out all fields.</h3>");
+        } else {
+            var userObj = SERVER.addUser();
+            var message = "<h1 style='text-align: center; padding-top: 120px;'>Thanks for registering, " + userObj.fName + ".</h1>";
+            $('.wrapper').html(message);
+            // console.log(userObj);
+        }
     });
 }
 
 $(document).ready(function () {
-    loadData();
+    initlisteners();
+    var sectionData = SERVER.getSection("home");
+    $('.wrapper').html(sectionData);
 });
-
-// {
-//     "fName": "Maria",
-//     "lName": "Leichty",
-//     "email": "ts@ts.com",
-//     "twitter": "@Leichty4"
-// }
