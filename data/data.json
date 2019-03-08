@@ -15,10 +15,6 @@
     {
       "sectionName": "register",
       "sectionContent": "<section class='register'><h1>Register</h1><form action='#'><input id='fName' type='text' name='firstname' placeholder='First Name' required><input id='lName' type='text' name='lastname' placeholder='Last Name' required><input id='email' type='email' name='email' placeholder='Email' required><input id='twitter' type='text' name='twitter' placeholder='Twitter Handle' required><input disabled='true' id='submit' type='submit' value='Submit'></form></section>"
-    },
-    {
-      "sectionName": "users",
-      "sectionContent": "<h1>Users</h1>"
     }
   ]
 }

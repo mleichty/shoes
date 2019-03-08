@@ -60,4 +60,5 @@ $(document).ready(function () {
     initlisteners();
     var sectionData = SERVER.getSection("home");
     $('.wrapper').html(sectionData);
+    sectionListeners();
 });
