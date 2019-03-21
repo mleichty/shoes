@@ -7,19 +7,27 @@ var SERVER = (function () {
     var _allSections = [];
 
 
-    var _loadData = function () {
+    var _loadData = function (callback) {
         $.getJSON("data/data.json", function (data) {
             _allUsers = data.Users;
             _allSections = data.Sections;
-
+            console.log("data");
+            console.log(_allUsers);
+            console.log(_allSections);
+            //why is this a function? where is the string being passed to? app line 61
+            return callback("success");
             //add comma to just show object info instead of concatonating
             // console.log("allSections ", _allUsers);
             // console.log("allSections ", _allSections);
+        }).fail(function(error) {
+            //how can I test this?
+            console.log("Error:", error);
         });
     };
 
     //if want to access directly
-    _loadData();
+    //this should be done in the app.js because this file shouldn't execute anything
+    // _loadData();
 
     var _getSection = function (sectionYouWant) {
         let sec = {};
@@ -55,6 +63,7 @@ var SERVER = (function () {
 
 
     return {
+        loadData: _loadData,
         getSection: _getSection,
         addUser: _addUser,
         getAllUsers: _getAllUsers

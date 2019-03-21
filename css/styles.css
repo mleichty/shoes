@@ -32,6 +32,25 @@ img {
 }
 
 /******************************/
+/*modal styles*/
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+
+.toggle{
+    display: none;
+}
+
+/******************************/
 /*nav styles*/
 
 .nav {
